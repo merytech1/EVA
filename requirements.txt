@@ -1,2 +1,52 @@
-# Dependencias de la función Python de Vercel (api/index.py). La lista real está en backend/.
--r backend/requirements.txt
+# Dependencias del backend. Vive en la raíz porque Vercel lee este archivo para la función
+# Python (api/index.py) y no resuelve un `-r` a otro archivo. backend/requirements.txt lo incluye.
+
+# ── Framework ────────────────────────────────────────────────
+fastapi==0.136.1
+starlette==1.0.0
+uvicorn==0.46.0
+annotated-doc==0.0.4
+annotated-types==0.7.0
+anyio==4.13.0
+asyncpg==0.31.0
+click==8.3.3
+alembic==1.15.2
+PyJWT==2.13.0
+cryptography>=41.0
+h11==0.16.0
+httptools==0.7.1
+watchfiles==1.1.1
+websockets==16.0
+uvloop==0.22.1
+
+# ── Validación ───────────────────────────────────────────────
+pydantic==2.13.4
+pydantic-settings==2.14.1
+pydantic_core==2.46.4
+typing_extensions==4.15.0
+typing-inspection==0.4.2
+
+# ── Base de datos ────────────────────────────────────────────
+SQLAlchemy==2.0.38
+
+# ── Gráficos del PDF exportado (export_service) ──────────────
+matplotlib==3.11.0
+numpy==2.3.5
+
+# ── Utilidades ───────────────────────────────────────────────
+httpx==0.28.1
+python-dotenv==1.2.2
+PyYAML==6.0.3
+idna==3.14
+
+# ── PDF ──────────────────────────────────────────────────────
+fpdf2==2.8.1
+
+# ── Sentry ───────────────────────────────────────────────────
+sentry-sdk==2.28.0
+greenlet>=3.0
+jinja2>=3.1
+
+# ── Auth ─────────────────────────────────────────────────────
+fastapi-users[sqlalchemy]==15.0.5
+requests>=2.31
