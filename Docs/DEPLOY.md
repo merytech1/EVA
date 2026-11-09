@@ -21,7 +21,7 @@ https://<proyecto>.vercel.app
 |---|---|
 | `vercel.json` | Build del frontend, región `gru1`, archivos excluidos de la función, rewrites y headers |
 | `api/index.py` | Monta la API de `backend/app/main.py` bajo `/api` |
-| `requirements.txt` | Apunta a `backend/requirements.txt` (dependencias de la función) |
+| `requirements.txt` | Lista completa de dependencias de Python. Vercel no resuelve `-r`, así que vive aquí y `backend/requirements.txt` la incluye |
 | `.python-version` | Python 3.12 para la función |
 
 **Por qué un solo proyecto:**
@@ -134,7 +134,7 @@ Si cambias una variable, haz *Redeploy*: las `VITE_*` se incrustan en el build d
 
 | Síntoma | Causa probable | Qué hacer |
 |---|---|---|
-| El build falla instalando dependencias de Python | El instalador no siguió el `-r backend/requirements.txt` de la raíz | Copiar el contenido de `backend/requirements.txt` en `requirements.txt` de la raíz, y anotarlo aquí |
+| `PYTHON_REQUIREMENTS_PARSE_ERROR` al instalar dependencias de Python | Vercel no resuelve `-r` a otro archivo | La lista completa va en `requirements.txt` de la raíz; `backend/requirements.txt` solo hace `-r ../requirements.txt` (ya corregido en T25) |
 | `/api/...` devuelve el `index.html` | El rewrite del frontend se aplicó antes que el de la API | Revisar que en `vercel.json` el rewrite `/api/(.*)` esté primero |
 | `500` en todo `/api` con error de conexión | `DATABASE_URL` vacío o sin `-pooler` | Revisar la variable del entorno correspondiente (Production o Preview) |
 | `429 Demasiadas solicitudes` | Rate limit (login 10/15 min por IP; registro, recuperación y verificación 10/h por IP; chatbot 20/h; PDF 5/h; borrado de cuenta 2/día) | Esperar el tiempo de `Retry-After` |

@@ -53,7 +53,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          # Igual que Vercel: desde el requirements.txt de la raíz, que incluye el del backend.
+          # Igual que Vercel: desde el requirements.txt de la raíz, que tiene la lista completa.
           pip install -r requirements.txt
           pip install -r backend/requirements-dev.txt
 
