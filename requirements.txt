@@ -1,5 +1,6 @@
 # Dependencias del backend. Vive en la raíz porque Vercel lee este archivo para la función
-# Python (api/index.py) y no resuelve un `-r` a otro archivo. backend/requirements.txt lo incluye.
+# Python (api/index.py) y no sigue inclusiones de otros archivos; backend/requirements.txt lo incluye.
+# Ojo: el parser de Vercel trata como inclusión cualquier línea con el flag de inclusión, aunque sea comentario.
 
 # ── Framework ────────────────────────────────────────────────
 fastapi==0.136.1
